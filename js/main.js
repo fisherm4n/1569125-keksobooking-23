@@ -1,4 +1,4 @@
-const randomValue = (min,max) =>{
+function randomValue (min,max){
   if (min < 0 || max < 0 ){
     return console.log('Вы ввели отрицательное число');
   }
@@ -10,7 +10,7 @@ const randomValue = (min,max) =>{
 }
 randomValue (0 , 100);
 
-const randomFloat = (min, max, afterDot) =>{
+function randomFloat (min, max, afterDot){
   if (min < 0 || max < 0) {
     return console.log('Вы ввели отрицательное число');
   }
