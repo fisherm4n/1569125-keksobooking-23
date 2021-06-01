@@ -1,8 +1,8 @@
-function randomValue (min,max){
+function randomValue (min, max){
   if (min < 0 || max < 0 ){
     return 'Вы ввели отрицательное число';
   }
-  if (max<=min){
+  if (max <= min){
     return 'Вы ввели некорректный диапозон';
 
   }
