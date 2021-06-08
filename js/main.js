@@ -18,6 +18,16 @@ function randomFloat (min, max, afterDot){
     return 'Вы ввели некорректный диапозон';
   }
   const randomResult = Math.random() * (max - min + 1) + min;
+
   return randomResult.toFixed(afterDot);
 }
 randomFloat(2, 98, 1);
+//check
+function name(params) {
+  return;
+}
+randomFloat(2, 98, 1);
+//check
+function name(params) {
+  return;
+}
