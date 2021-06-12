@@ -5,8 +5,8 @@ const LNG_MIN = 139.7;
 const LNG_MAX = 139.8;
 const PRECISION = 5;
 const TYPE = ['flat', 'house', 'room'];
-const CHECKIN = ["12:00", "13:00", "14:00"];
-const CHECKOUT = ["12:00", "13:00", "14:00"];
+const CHECKIN = ['12:00', '13:00', '14:00'];
+const CHECKOUT = ['12:00', '13:00', '14:00'];
 const FEATURES = [
   'wifi',
   'dishwasher',
@@ -68,4 +68,3 @@ const createAds = () => {
   return offer;
 };
 const ArrayOfAds = [createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds()];
-console.log(ArrayOfAds);
