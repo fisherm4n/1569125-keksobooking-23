@@ -68,4 +68,4 @@ const createAds = () => {
   return offer;
 };
 const ArrayOfAds = [createAds(), createAds(),createAds(),createAds(),createAds(),createAds(),createAds(),createAds(), createAds(), createAds()];
-console.log(ArrayOfAds[0]);
+console.log(ArrayOfAds);
