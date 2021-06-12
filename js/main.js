@@ -1,24 +1,24 @@
-const SRC_IMG = "img/avatars/user0";
+const SRC_IMG = 'img/avatars/user0';
 const LAT_MIN = 35.65;
 const LAT_MAX = 35.7;
 const LNG_MIN = 139.7;
 const LNG_MAX = 139.8;
 const PRECISION = 5;
-const TYPE = ["flat", "house", "room"];
+const TYPE = ['flat', 'house', 'room'];
 const CHECKIN = ["12:00", "13:00", "14:00"];
 const CHECKOUT = ["12:00", "13:00", "14:00"];
 const FEATURES = [
-  "wifi",
-  "dishwasher",
-  "parking",
-  "washer",
-  "elevator",
-  "conditioner",
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+  'conditioner',
 ];
 const PHOTOS = [
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg",
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg",
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg",
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 function randomFloat(min, max, afterDot = 1) {
   const lower = Math.min(Math.abs(min), Math.abs(max));
@@ -51,7 +51,7 @@ const createAds = () => {
     lng: randomFloat(LNG_MIN, LNG_MAX, PRECISION),
   };
   const about = {
-    title: "Уютная квартира в центре.Звучание города",
+    title: 'Уютная квартира в центре.Звучание города',
     address: `${location.lat}, ${location.lng}`,
     price: randomValue(100, 2000),
     type: TYPE[randomValue(0, TYPE.length - 1)],
@@ -61,7 +61,7 @@ const createAds = () => {
     checkout: CHECKOUT[randomValue(0, CHECKOUT.length - 1)],
     features: rndArray(FEATURES),
     description:
-      "Двухкомнатная квартира,панорамный вид на город, природу и т.д. ",
+      'Двухкомнатная квартира,панорамный вид на город, природу и т.д. ',
     photos: rndArray(PHOTOS),
   };
   const offer = [author, about, location];
