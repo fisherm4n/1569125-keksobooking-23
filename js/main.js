@@ -76,4 +76,4 @@ const createArrayOfAds = () => {
   }
   return arrayOfAds;
 }
-console.log(createArrayOfAds());
+alert(createArrayOfAds());
