@@ -71,7 +71,7 @@ const createAds = () => {
 
 const createArrayOfAds = () => {
   const arrayOfAds = [];
-  for (let i = 0; i <= NUMBER_OF_ADS; i++) {
+  for (let i = 0; i < NUMBER_OF_ADS; i++) {
     arrayOfAds.push(createAds());
   }
   return arrayOfAds;
