@@ -1,3 +1,4 @@
+const NUMBER_OF_ADS = 10;
 const SRC_IMG = 'img/avatars/user0';
 const LAT_MIN = 35.65;
 const LAT_MAX = 35.7;
@@ -67,4 +68,12 @@ const createAds = () => {
   const offer = [author, about, location];
   return offer;
 };
-const ArrayOfAds = [createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds(), createAds()];
+
+const createArrayOfAds = () => {
+  const arrayOfAds = [];
+  for (let i = 0; i <= NUMBER_OF_ADS; i++) {
+    arrayOfAds.push(createAds());
+  }
+  return arrayOfAds;
+}
+console.log(createArrayOfAds());
