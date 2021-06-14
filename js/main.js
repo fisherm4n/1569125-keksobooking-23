@@ -65,15 +65,15 @@ const createAds = () => {
       'Двухкомнатная квартира,панорамный вид на город, природу и т.д. ',
     photos: rndArray(PHOTOS),
   };
-  const offer = {"author": author, "offer": about, "location": location};
+  const offer = { author: author, offer: about, location: location };
   return offer;
 };
 
 const createArrayOfAds = () => {
   const arrayOfAds = [];
-  for (let i = 0; i < NUMBER_OF_ADS; i++) {
+  for (let index = 0; index < NUMBER_OF_ADS; index++) {
     arrayOfAds.push(createAds());
   }
   return arrayOfAds;
-}
-console.log(createArrayOfAds());
+};
+createArrayOfAds();
