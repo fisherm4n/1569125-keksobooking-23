@@ -64,8 +64,8 @@ const createAds = () => {
       "Двухкомнатная квартира,панорамный вид на город, природу и т.д. ",
     photos: rndArray(PHOTOS),
   };
-  const offer = [author, about, location];
+  const offer = {"author": author, "offer": about, "location": location};
   return offer;
 };
 const ArrayOfAds = [createAds(), createAds(),createAds(),createAds(),createAds(),createAds(),createAds(),createAds(), createAds(), createAds()];
-console.log(ArrayOfAds[0]);
+console.log(ArrayOfAds);
