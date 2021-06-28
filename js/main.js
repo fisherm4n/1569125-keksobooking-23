@@ -1,3 +1,4 @@
+import { randomFloat, randomValue, rndArray } from './utils.js';
 const NUMBER_OF_ADS = 10;
 const SRC_IMG = 'img/avatars/user0';
 const LAT_MIN = 35.65;
@@ -21,28 +22,7 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
-function randomFloat(min, max, afterDot = 1) {
-  const lower = Math.min(Math.abs(min), Math.abs(max));
-  const upper = Math.max(Math.abs(min), Math.abs(max));
-  const randomResult = Math.random() * (upper - lower + 1) + lower;
-  return randomResult.toFixed(afterDot);
-}
-function randomValue(min, max) {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-  return Math.floor(Math.random() * (upper - lower + 1)) + lower;
-}
-function rndArray(someArray) {
-  const arrayIndex = randomValue(0, someArray.length);
-  const arrayIndex2 = randomValue(0, someArray.length);
-  if (arrayIndex > arrayIndex2) {
-    return someArray.slice(arrayIndex2, arrayIndex).join();
-  } else if (arrayIndex === arrayIndex2) {
-    return someArray.slice(0, someArray.length).join();
-  } else {
-    return someArray.slice(arrayIndex, arrayIndex2).join();
-  }
-}
+
 const createAds = () => {
   const author = {
     avatar: `${SRC_IMG + randomValue(1, 8)}.png`,
@@ -68,7 +48,6 @@ const createAds = () => {
   const offer = { author: author, offer: about, location: location };
   return offer;
 };
-
 const createArrayOfAds = () => {
   const arrayOfAds = [];
   for (let index = 0; index < NUMBER_OF_ADS; index++) {
