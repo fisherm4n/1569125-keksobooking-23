@@ -55,4 +55,4 @@ const generateTemplate = function (offers) {
   });
   return fragment;
 };
-export {generateTemplate};
+export { generateTemplate };
