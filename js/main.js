@@ -1,4 +1,5 @@
 import { randomFloat, randomValue, rndArray } from './utils.js';
+import  {generateTemplate} from './generate-templates.js';
 import './generate-templates.js';
 const NUMBER_OF_ADS = 10;
 const SRC_IMG = 'img/avatars/user0';
@@ -50,58 +51,8 @@ const createAds = () => {
   return about;
 };
 
-// const createArrayOfAds = () => {
-//   const arrayOfAds = [];
-//   for (let index = 0; index < NUMBER_OF_ADS; index++) {
-//     arrayOfAds.push(createAds());
-//   }
-//   return arrayOfAds;
-// };
-// const createdArr = createArrayOfAds();
-// console.log(createdArr);
-const firstTemplate = document
-  .querySelector('#card')
-  .content.querySelector('.popup');
 const map = document.querySelector('#map-canvas');
-const TYPE_OF_BOOK = {
-  flat: 'Квартира',
-  bungalow: 'Бунгало',
-  house: 'Дом',
-  palace: 'Дворец',
-  hotel: 'Отель',
-};
-// const offerElement = firstTemplate.cloneNode(true);
-// map.appendChild(offerElement);
-const createWizards = () => new Array(NUMBER_OF_ADS).fill(null).map(() => createAds());
-const generateTemplate = function (offers) {
-  const fragment = document.createDocumentFragment();
-  offers.forEach(({ offer, author }) => {
-    const offerElement = firstTemplate.cloneNode(true);
-    const title = offerElement.querySelector('.popup__title');
-    title.textContent = offer.title;
-    const address = offerElement.querySelector('.popup__text--address');
-    address.textContent = offer.address;
-    // const price = offerElement.querySelector('.price__teext--price');
-    // price.textContent = `${offer.price}₽/ночь`;
-    // const type = offerElement.querySelector('.popup__type');
-    // type.textContent = offer.TYPE_OF_BOOK[offer.type];
-    const rooms = offerElement.querySelector('.popup__text--capacity');
-    rooms.textContent = `${offer.rooms} комнаты для ${offer.guests} `;
-    const time = offerElement.querySelector('.popup__text--time');
-    time.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-    const features = offerElement.querySelector('.popup__features');
-    features.textContent = offer.features;
-    const description = offerElement.querySelector('.popup_description');
-    description.textContent = offer.description;
-    // const photo = offerElement.querySelector('.popup__photos');
-    // offer.photos.forEach((photoEl) =>{
-    //   const img = photo.createElement('img');
-    //   img.src = photoEl;
-    // })
-    const avatar = offerElement.querySelector('.popup__avatar');
-    avatar.src = author.avatar;
-    fragment.appendChild(offerElement);
-  });
-  return fragment;
-};
-map.appendChild(generateTemplate(createWizards));
+
+const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
+const eachTepmlate = generateTemplate(arrayOfAds);
+map.appendChild(eachTepmlate.children[1]);

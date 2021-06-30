@@ -13,11 +13,11 @@ function rndArray(someArray) {
   const arrayIndex = randomValue(0, someArray.length);
   const arrayIndex2 = randomValue(0, someArray.length);
   if (arrayIndex > arrayIndex2) {
-    return someArray.slice(arrayIndex2, arrayIndex).join();
+    return someArray.slice(arrayIndex2, arrayIndex);
   } else if (arrayIndex === arrayIndex2) {
-    return someArray.slice(0, someArray.length).join();
+    return someArray.slice(0, someArray.length);
   } else {
-    return someArray.slice(arrayIndex, arrayIndex2).join();
+    return someArray.slice(arrayIndex, arrayIndex2);
   }
 }
 export { randomFloat, randomValue, rndArray };
