@@ -1,5 +1,6 @@
 import { randomFloat, randomValue, rndArray } from './utils.js';
-import  {generateTemplate} from './generate-templates.js';
+import { generateTemplate } from './generate-templates.js';
+import {disableForm, activateForm} from './form-activation.js';
 import './generate-templates.js';
 const NUMBER_OF_ADS = 10;
 const SRC_IMG = 'img/avatars/user0';
@@ -8,7 +9,7 @@ const LAT_MAX = 35.7;
 const LNG_MIN = 139.7;
 const LNG_MAX = 139.8;
 const PRECISION = 5;
-const TYPE = ['flat', 'house','bungalow','palace','hotel'];
+const TYPE = ['flat', 'house', 'bungalow', 'palace', 'hotel'];
 const CHECKIN = ['12:00', '13:00', '14:00'];
 const CHECKOUT = ['12:00', '13:00', '14:00'];
 const FEATURES = [
@@ -50,9 +51,10 @@ const createAds = () => {
   const about = { author: author, offer: offer, location: location };
   return about;
 };
-
+const adForm = document.querySelector('.ad-form');
+disableForm(adForm);
+activateForm(adForm);
 const map = document.querySelector('#map-canvas');
-
 const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
 const eachTepmlate = generateTemplate(arrayOfAds);
 map.appendChild(eachTepmlate.children[1]);
