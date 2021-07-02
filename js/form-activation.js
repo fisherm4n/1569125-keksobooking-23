@@ -4,11 +4,11 @@ const disableForm = function (el) {
     item.disabled = true;
   });
 };
+
 const activateForm = function (el) {
   el.classList.remove(`${el.classList[1]}`);
   el.querySelectorAll('fieldset').forEach((item) => {
     item.disabled = false;
   });
 };
-
 export { disableForm, activateForm };
