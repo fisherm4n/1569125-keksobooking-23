@@ -1,4 +1,3 @@
-
 const disableForm = function (el) {
   el.classList.add(`${el.classList[0]}--disabled`);
   el.querySelectorAll('fieldset').forEach((item) => {
@@ -12,4 +11,4 @@ const activateForm = function (el) {
   });
 };
 
-export {disableForm,activateForm};
+export { disableForm, activateForm };
