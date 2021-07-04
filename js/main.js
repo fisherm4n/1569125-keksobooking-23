@@ -53,8 +53,11 @@ const createAds = () => {
   return about;
 };
 const adForm = document.querySelector('.ad-form');
+const mapFilters = document.querySelector('.map__filters');
 disableForm(adForm);
 activateForm(adForm);
+disableForm(mapFilters);
+activateForm(mapFilters);
 const map = document.querySelector('#map-canvas');
 const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
 const eachTepmlate = generateTemplate(arrayOfAds);
