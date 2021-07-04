@@ -12,6 +12,12 @@ const PRECISION = 5;
 const TYPE = ['flat', 'house', 'bungalow', 'palace', 'hotel'];
 const CHECKIN = ['12:00', '13:00', '14:00'];
 const CHECKOUT = ['12:00', '13:00', '14:00'];
+const PHOTOS = [
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
+];
+
 const FEATURES = [
   'wifi',
   'dishwasher',
@@ -19,11 +25,6 @@ const FEATURES = [
   'washer',
   'elevator',
   'conditioner',
-];
-const PHOTOS = [
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
 const createAds = () => {
@@ -52,8 +53,11 @@ const createAds = () => {
   return about;
 };
 const adForm = document.querySelector('.ad-form');
+const mapFilters = document.querySelector('.map__filters');
 disableForm(adForm);
 activateForm(adForm);
+disableForm(mapFilters);
+activateForm(mapFilters);
 const map = document.querySelector('#map-canvas');
 const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
 const eachTepmlate = generateTemplate(arrayOfAds);
