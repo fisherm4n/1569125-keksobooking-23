@@ -39,7 +39,7 @@ const onRoomToGuestCheck = function(){
     selectGuests.setCustomValidity('');
   }
   selectGuests.reportValidity();
-}
+};
 selectGuests.addEventListener('change',onRoomToGuestCheck);
 selectRooms.addEventListener('change',onRoomToGuestCheck);
 const onPriceChange = function(){
