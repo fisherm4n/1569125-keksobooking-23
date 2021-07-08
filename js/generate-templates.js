@@ -12,17 +12,13 @@ const TYPE_OF_BOOK = {
 const checkValue = function (node, nodeValue) {
   if (nodeValue === '') {
     node.classList.add('hidden');
-  } else {
+  } else if(node.hasAttribute('textContent')){
     node.textContent = nodeValue;
-  }
-};
-const srcValue = function (node, nodeValue) {
-  if (nodeValue === '') {
-    node.classList.add('hidden');
-  } else {
+  }else if(node.hasAttribute('src')){
     node.src = nodeValue;
   }
 };
+
 const generateTemplate = function (offers) {
   const fragment = document.createDocumentFragment();
   offers.forEach(({ offer, author }) => {
@@ -46,11 +42,11 @@ const generateTemplate = function (offers) {
     const photos = offerElement.querySelector('.popup__photos');
     const img = offerElement.querySelector('.popup__photo');
     offer.photos.forEach((imgEl) => {
-      srcValue(img, imgEl);
+      checkValue(img, imgEl);
       photos.appendChild(img.cloneNode(true));
     });
     const avatar = offerElement.querySelector('.popup__avatar');
-    srcValue(avatar, author.avatar);
+    checkValue(avatar, author.avatar);
     fragment.appendChild(offerElement);
   });
   return fragment;
