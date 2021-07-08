@@ -48,11 +48,13 @@ const onRoomToGuestCheck = function () {
   }
   selectGuests.reportValidity();
 };
+onRoomToGuestCheck();
 selectGuests.addEventListener('change', onRoomToGuestCheck);
 selectRooms.addEventListener('change', onRoomToGuestCheck);
 const onPriceChange = function () {
   inputPrice.placeholder = MINPRICE_FOR_TYPE[selectType.value];
   inputPrice.min = MINPRICE_FOR_TYPE[selectType.value];
 };
+onPriceChange();
 selectType.addEventListener('change', onPriceChange);
 export { disableForm, activateForm };
