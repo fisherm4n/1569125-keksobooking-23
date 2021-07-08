@@ -1,6 +1,6 @@
 import { randomFloat, randomValue, rndArray } from './utils.js';
 import { generateTemplate } from './generate-templates.js';
-import {disableForm, activateForm} from './form-activation.js';
+import {disableForm, activateForm} from './form-offer.js';
 import './generate-templates.js';
 const NUMBER_OF_ADS = 10;
 const SRC_IMG = 'img/avatars/user0';
