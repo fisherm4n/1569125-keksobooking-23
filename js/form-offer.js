@@ -1,16 +1,34 @@
+
+const adForm = document.querySelector('.ad-form');
+const mapFilters = document.querySelector('.map__filters');
+
 const disableForm = function (el) {
   el.classList.add(`${el.classList[0]}--disabled`);
   el.querySelectorAll('fieldset').forEach((item) => {
     item.disabled = true;
   });
 };
+const disableAdForm = function(){
+  return disableForm(adForm);
+};
 
+const disablemapFilters = function(){
+  return disableForm(mapFilters);
+};
 const activateForm = function (el) {
   el.classList.remove(`${el.classList[1]}`);
   el.querySelectorAll('fieldset').forEach((item) => {
     item.disabled = false;
   });
 };
+const activateAdForm = function(){
+  return activateForm(adForm);
+};
+const activateMapForm = function () {
+  return  activateForm(mapFilters);
+};
+
+// activateAdForm ();
 const form = document.querySelector('.ad-form');
 const selectType = form.querySelector('#type');
 const inputPrice = form.querySelector('#price');
@@ -58,4 +76,4 @@ const onPriceChange = function () {
 };
 onPriceChange();
 selectType.addEventListener('change', onPriceChange);
-export { disableForm, activateForm };
+export { disableAdForm, disablemapFilters, activateAdForm, activateMapForm };
