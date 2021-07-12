@@ -6,6 +6,8 @@ import {
   activateAdForm,
   activateMapForm
 } from './form-offer.js';
+const MAIN_LAT = 35.6895;
+const MAIN_LNG = 139.692;
 const NUMBER_OF_ADS = 10;
 const address = document.querySelector('#address');
 address.disabled = true;
@@ -13,15 +15,17 @@ const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
 const resetButton = document.querySelector('.ad-form__reset');
 disableAdForm();
 disablemapFilters();
+address.value = ' 35.6895,139.692 ';
 const map = L.map('map-canvas')
   .on('load', () => {
     activateAdForm();
     activateMapForm();
+    address.value = `${MAIN_LAT},${MAIN_LNG}`;
   })
   .setView(
     {
-      lat: 35.6895,
-      lng: 139.692,
+      lat: MAIN_LAT,
+      lng: MAIN_LNG,
     },
     10);
 
@@ -38,27 +42,28 @@ const mainPinIcon = L.icon({
 
 const mainPinMarker = L.marker(
   {
-    lat: 35.6895,
-    lng: 139.692,
+    lat: MAIN_LAT,
+    lng: MAIN_LNG,
   },
   {
     draggable: true,
     icon: mainPinIcon,
   });
 mainPinMarker.on('moveend', (evt) => {
-  address.value = evt.target.getLatLng();
+  evt.target.getLatLng();
+  address.value = `${mainPinMarker._latlng.lat.toFixed(4)}, ${mainPinMarker._latlng.lng.toFixed(3)}`;
 });
 
 mainPinMarker.addTo(map);
 resetButton.addEventListener('click', () => {
   mainPinMarker.setLatLng({
-    lat: 35.6895,
-    lng: 139.692,
+    lat: MAIN_LAT,
+    lng: MAIN_LNG,
   });
   map.setView(
     {
-      lat: 35.6895,
-      lng: 139.692,
+      lat: MAIN_LAT,
+      lng: MAIN_LNG,
     },
     16);
 });
