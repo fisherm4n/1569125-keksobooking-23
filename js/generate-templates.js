@@ -21,6 +21,7 @@ const checkValue = function (node, nodeValue) {
 const generateTemplate = function ({author, offer}) {
   const offersElement = firstTemplate.cloneNode(true);
   const title = offersElement.querySelector('.popup__title');
+  title.textContent = offer.title;
   checkValue(title, offer.title);
   const address = offersElement.querySelector('.popup__text--address');
   checkValue(address, offer.address);

@@ -1,7 +1,17 @@
 
+import {sendOffersData} from './fetch-data.js';
+import { resetMap } from './map.js';
+import {createSuccessMessage, createErrorsMessage} from './page.js';
 const adForm = document.querySelector('.ad-form');
 const mapFilters = document.querySelector('.map__filters');
-
+const ALERT_SHOW_TIME = 5000;
+const KEY_ESC = 'Esc';
+const KEY_ESCAPE = 'Escape';
+const fieldsetAdForm = adForm.querySelectorAll('fieldset');
+const mapFilter = mapFilters.querySelectorAll('.map__filter');
+const mapFilterFieldset = mapFilters.querySelector('fieldset');
+const adTimeIn = adForm.querySelector('#timein');
+const adTimeOut = adForm.querySelector('#timeout');
 const disableForm = function (el) {
   el.classList.add(`${el.classList[0]}--disabled`);
   el.querySelectorAll('fieldset').forEach((item) => {
@@ -29,13 +39,12 @@ const activateMapForm = function () {
 };
 
 // activateAdForm ();
-const form = document.querySelector('.ad-form');
-const selectType = form.querySelector('#type');
-const inputPrice = form.querySelector('#price');
-const selectRooms = form.querySelector('#room_number');
-const selectGuests = form.querySelector('#capacity');
-const timeIn = form.querySelector('#timein');
-const timeOut = form.querySelector('#timeout');
+const selectType = adForm.querySelector('#type');
+const inputPrice = adForm.querySelector('#price');
+const selectRooms = adForm.querySelector('#room_number');
+const selectGuests = adForm.querySelector('#capacity');
+const timeIn = adForm.querySelector('#timein');
+const timeOut = adForm.querySelector('#timeout');
 const MINPRICE_FOR_TYPE = {
   bungalow: 0,
   flat: 1000,
@@ -66,14 +75,88 @@ const onRoomToGuestCheck = function () {
   }
   selectGuests.reportValidity();
 };
-onRoomToGuestCheck();
 //
-selectGuests.addEventListener('change', onRoomToGuestCheck);
-selectRooms.addEventListener('change', onRoomToGuestCheck);
+
+// const bodyBlock = document.querySelector('body');
+// const successMessageTemlate = document.querySelector ('#success');
+// const errorMessageTemplate = document.querySelector ('#error');
+// const createMessage = (template) => {
+//   const messageFragment = document.createDocumentFragment();
+//   const message = template.cloneNode(true).content;
+//   messageFragment.appendChild(message);
+//   return bodyBlock.appendChild(messageFragment);
+// };
+
+// const createSuccessMessage = () => {
+//   createMessage (successMessageTemlate);
+
+//   const successClass = document.querySelector('.success');
+//   const onEscSuccesMessage = (evt) => {
+//     if (evt.key === KEY_ESC || evt.key === KEY_ESCAPE) {
+//       closeMessage (successClass);
+//       document.removeEventListener('keydown', onEscSuccesMessage);
+//     }
+//   };
+
+//   successClass.addEventListener('click', () => {
+//     closeMessage (successClass);
+//     document.removeEventListener('keydown', onEscSuccesMessage);
+//   });
+
+//   document.addEventListener('keydown', onEscSuccesMessage);
+// };
+
+// const createErrorsMessage = () => {
+//   createMessage(errorMessageTemplate);
+
+//   const errorClass = document.querySelector('.error');
+//   const onEscErrorMessage = (evt) => {
+//     if (evt.key === KEY_ESC || evt.key === KEY_ESCAPE) {
+//       closeMessage (errorClass);
+//       document.removeEventListener('keydown', onEscErrorMessage);
+//     }
+//   };
+
+//   errorClass.addEventListener('click', () => {
+//     closeMessage(errorClass);
+//     document.removeEventListener('keydown', onEscErrorMessage);
+//   });
+
+//   document.addEventListener('keydown', onEscErrorMessage);
+
+//   const errorButton = errorClass.querySelector('.error__button');
+//   errorButton.addEventListener('click', () => {
+//     closeMessage(errorClass);
+//     document.removeEventListener('keydown', onEscErrorMessage);
+//   });
+// };
 const onPriceChange = function () {
   inputPrice.placeholder = MINPRICE_FOR_TYPE[selectType.value];
   inputPrice.min = MINPRICE_FOR_TYPE[selectType.value];
 };
-onPriceChange();
+const setUserFormSubmit = (onSuccess, onFail) => {
+  adForm.addEventListener('submit', (evt) =>{
+    if(!onRoomToGuestCheck()) {
+      return evt.preventDefault();
+    }
+    evt.preventDefault();
+    sendOffersData(
+      ()=>{
+      console.log('forma otprabilas');
+      onSuccess();
+      adForm.reset();
+      mapFilters.reset();
+      resetMap();
+      onPriceChange();
+    },
+    () => onFail(),
+    new FormData(evt.target));
+  });
+};
+
+
+setUserFormSubmit(createSuccessMessage, createErrorsMessage);
+selectGuests.addEventListener('change', onRoomToGuestCheck);
+selectRooms.addEventListener('change', onRoomToGuestCheck);
 selectType.addEventListener('change', onPriceChange);
-export { disableAdForm, disablemapFilters, activateAdForm, activateMapForm };
+export { disableAdForm, disablemapFilters, activateAdForm, activateMapForm,setUserFormSubmit };

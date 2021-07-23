@@ -6,15 +6,16 @@ import {
   activateAdForm,
   activateMapForm
 } from './form-offer.js';
+
 const MAIN_LAT = 35.6895;
 const MAIN_LNG = 139.692;
 const NUMBER_OF_ADS = 10;
 const address = document.querySelector('#address');
-address.disabled = true;
+// address.disabled = true;
 const arrayOfAds = new Array(NUMBER_OF_ADS).fill('').map(() => createAds());
 const resetButton = document.querySelector('.ad-form__reset');
-disableAdForm();
-disablemapFilters();
+// disableAdForm();
+// disablemapFilters();
 address.value = ' 35.6895,139.692 ';
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -55,19 +56,21 @@ mainPinMarker.on('moveend', (evt) => {
 });
 
 mainPinMarker.addTo(map);
-resetButton.addEventListener('click', () => {
-  mainPinMarker.setLatLng({
-    lat: MAIN_LAT,
-    lng: MAIN_LNG,
-  });
-  map.setView(
-    {
+const resetMap = () => {
+  resetButton.addEventListener('click', () => {
+    mainPinMarker.setLatLng({
       lat: MAIN_LAT,
       lng: MAIN_LNG,
-    },
-    16);
-});
-
+    });
+    map.setView(
+      {
+        lat: MAIN_LAT,
+        lng: MAIN_LNG,
+      },
+      16);
+  });
+}
+resetMap();
 arrayOfAds.forEach((point) => {
   const { lat, lng } = point.location;
   const icon = L.icon({
@@ -88,38 +91,5 @@ arrayOfAds.forEach((point) => {
 
   marker.addTo(map).bindPopup(generateTemplate(point));
 });
-// const createCustomPopup = (point) => {
-//     const balloonTemplate = document.querySelector('#balloon').content.querySelector('.balloon');
-//     const popupElement = balloonTemplate.cloneNode(true);
 
-//     popupElement.querySelector('.balloon__title').textContent = point.title;
-//     popupElement.querySelector('.balloon__lat-lng').textContent = `Координаты: ${point.lat}, ${point.lng}`;
-
-//     return popupElement;
-//   };
-// points.forEach((point) => {
-//     const {lat, lng} = point;
-
-//     const icon = L.icon({
-//       iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
-//       iconSize: [40, 40],
-//       iconAnchor: [20, 40],
-//     });
-
-//     const marker = L.marker(
-//       {
-//         lat,
-//         lng,
-//       },
-//       {
-//         icon,
-//       },
-//     );
-
-//     marker
-//       .addTo(map)
-//       .bindPopup(
-//         createCustomPopup(point),
-//       );
-//   });
-export { map };
+export { map, resetMap };
