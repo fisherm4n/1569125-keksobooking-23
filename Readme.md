@@ -1,7 +1,7 @@
-# Личный проект «{{projectTitle}}»
+# Личный проект «Кексобукинг»
 
-* Студент: [{{userName}}]({{userProfile}}).
-* Наставник: `Неизвестно`.
+* Студент: [Василий Рыбушкин](https://up.htmlacademy.ru/javascript/23/user/1569125).
+* Наставник: `Elizaveta Kryazhkova`.
 
 ---
 
